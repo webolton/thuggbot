@@ -4,7 +4,7 @@
 
 ## Prereqirements
 
-- python 3.9.0 >+
+- python 3.9.0 >=
 - pip3
 - pytest
 
@@ -15,3 +15,7 @@
 ## Run the tests
 
 `make test`
+
+## Run the linter
+
+`make lint`
