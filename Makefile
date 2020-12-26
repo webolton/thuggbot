@@ -1,7 +1,7 @@
 MODULE := thuggs
 
 run:
-	@python -m $(MODULE)
+	@python3 -m $(MODULE)
 
 test:
 	@pytest
