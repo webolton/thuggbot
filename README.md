@@ -8,6 +8,10 @@
 - pip3
 - pytest
 
+## Install the dependencies
+
+`make setup`
+
 ## Run the project
 
 `make run`
@@ -19,3 +23,7 @@
 ## Run the linter
 
 `make lint`
+
+## Export requirements.txt
+
+`make reqs`
