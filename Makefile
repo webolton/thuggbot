@@ -1,10 +1,19 @@
 MODULE := thuggs
 
 run:
-	@python3 -m $(MODULE)
+	@python -m $(MODULE) $(type)
 
 test:
 	@pytest
 
 lint:
-	find . -type f -name "*.py" | xargs pylint
+	find . -type f -name "*.py" | xargs pylin
+
+reqs:
+	@python -m pip freeze > requirements.txt
+
+setup:
+	@python -m pip install -r requirements.txt
+
+.PHONY: test lint
+
