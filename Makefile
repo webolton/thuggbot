@@ -10,7 +10,7 @@ specs:
 	mamba
 
 lint:
-	find . -type f -name "*.py" | xargs pylint
+	pycodestyle
 
 reqs:
 	@python -m pip freeze > requirements.txt

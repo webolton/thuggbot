@@ -1,5 +1,6 @@
 from .context import thuggs
 
+
 def test_app(capsys, example_fixture):
     pass
     # thuggs.Thuggs.run()

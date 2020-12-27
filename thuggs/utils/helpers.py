@@ -1,5 +1,6 @@
 from ..exceptions.exceptions import IllegalArgumentError
 
+
 class Helpers:
 
     @staticmethod
@@ -9,5 +10,5 @@ class Helpers:
         """
         if (cli_arg == 'cat') or (cli_arg == 'human'):
             return True
-        
+
         raise IllegalArgumentError('Must use "cat" or "human" for argument.')
