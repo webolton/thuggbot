@@ -6,7 +6,6 @@
 
 - python 3.9.0 >=
 - pip3
-- pytest
 
 ## Install the dependencies
 
@@ -14,11 +13,13 @@
 
 ## Run the project
 
-`make run`
+Requires one of two arguments: `cat` for cat recognition and identification, `human` for humans.
+
+`make run type=cat`
 
 ## Run the tests
 
-`make test`
+`make specs`
 
 ## Run the linter
 

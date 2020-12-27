@@ -7,7 +7,7 @@ test:
 	@pytest
 
 specs:
-	@python run mamba
+	mamba
 
 lint:
 	find . -type f -name "*.py" | xargs pylint
@@ -18,4 +18,4 @@ reqs:
 setup:
 	@python -m pip install -r requirements.txt
 
-.PHONY: test lint
+.PHONY: test lint specs
