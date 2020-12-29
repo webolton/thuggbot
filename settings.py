@@ -11,3 +11,5 @@ if THUGGBOT_ENV == 'production':
 else:
     env_path = Path('.') / '.env'
 load_dotenv(dotenv_path=env_path)
+
+HAARCASCADE_URL=os.getenv('HAARCASCADE_URL')

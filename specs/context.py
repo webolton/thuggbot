@@ -1,5 +1,5 @@
 import thuggs.exceptions.exceptions as exceptions
-import thuggs.utils.helpers as helpers
+from thuggs.classes.recognizer import Recognizer
 import thuggs
 import sys
 import os
