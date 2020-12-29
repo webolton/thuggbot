@@ -1,4 +1,5 @@
-from .utils.helpers import Helpers
+from .classes.recognizer import Recognizer
+from .classes.web_client import WebClient
 import numpy as np
 from cv2 import cv2
 
