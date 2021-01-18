@@ -10,28 +10,26 @@ class WebClient:
     def __init__(self, recognition_type):
         self.recognition_type = recognition_type
 
-    def get_trained_data(self):
+    def get_trained_data(self, paths):
         """
         Returns XML of Haar Cascade
         """
         if self.recognition_type == 'cat':
-            if os.path.exists(f'{os.path.dirname(__file__)}/../data/cat.xml'):
+            if os.path.exists(paths['cascades_path']):
                 return
-            self.get_cat_haarcascade(self)
+            self.get_cat_haarcascade(self, paths)
         else:
-            if os.path.exists(
-                f'{os.path.dirname(__file__)}/../data/deploy.prototxt') and os.path.exists(
-                    f'{os.path.dirname(__file__)}/../data/bvlc_googlenet.caffemodel'):
+            if os.path.exists(paths['prototxt_path']) and os.path.exists(paths['model_path']):
                 return
 
-            if not os.path.exists(f'{os.path.dirname(__file__)}/../data/deploy.prototxt'):
-                self.get_prototxt_file(self)
-            if not os.path.exists(f'{os.path.dirname(__file__)}/../data/bvlc_googlenet.caffemodel'):
-                self.get_caffe_data(self)
+            if not os.path.exists(paths['prototxt_path']):
+                self.get_prototxt_file(self, paths)
+            if not os.path.exists(paths['model_path']):
+                self.get_caffe_data(self, paths)
             return
 
     @staticmethod
-    def get_cat_haarcascade(self):
+    def get_cat_haarcascade(self, paths):
         """
         Get haarcascade file for cat identification
         """
@@ -41,21 +39,21 @@ class WebClient:
         if response.status_code != 200:
             Response.raise_for_status(response)
 
-        self.haarcascade_tmp_file(response.text, self.recognition_type)
+        self.haarcascade_tmp_file(response.text, paths)
         return
 
     @staticmethod
-    def haarcascade_tmp_file(cascade_data, recognition_type):
+    def haarcascade_tmp_file(cascade_data, paths):
         """
         Save cat haarcascade file
         """
-        file = open(f'{os.path.dirname(__file__)}/../data/{recognition_type}.xml', 'w')
+        file = open(paths['cascades_path'], 'w')
         file.write(cascade_data)
         file.close()
         return
 
     @staticmethod
-    def get_caffe_data(self):
+    def get_caffe_data(self, paths):
         """
         Downloads caffe model data
         """
@@ -64,7 +62,7 @@ class WebClient:
         totalbits = 0
         if response.status_code != 200:
             Response.raise_for_status(response)
-        with open(f'{os.path.dirname(__file__)}/../data/bvlc_googlenet.caffemodel', 'wb') as f:
+        with open(paths['model_path'], 'wb') as f:
             for chunk in response.iter_content(chunk_size=1024):
                 if chunk:
                     totalbits += 1024
@@ -72,7 +70,7 @@ class WebClient:
                     f.write(chunk)
 
     @staticmethod
-    def get_prototxt_file(self):
+    def get_prototxt_file(self, paths):
         """
         Save caffe model
         """
@@ -80,7 +78,7 @@ class WebClient:
         if response.status_code != 200:
             Response.raise_for_status(response)
 
-        file = open(f'{os.path.dirname(__file__)}/../data/deploy.prototxt', 'w')
+        file = open(paths['prototxt_path'], 'w')
         file.write(response.text)
         file.close()
         return
