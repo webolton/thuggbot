@@ -13,3 +13,5 @@ else:
 load_dotenv(dotenv_path=env_path)
 
 HAARCASCADE_URL=os.getenv('HAARCASCADE_URL')
+CAFFEMODEL_URL=os.getenv('CAFFEMODEL_URL')
+PROTOTXT_URL=os.getenv('PROTOTXT_URL')
