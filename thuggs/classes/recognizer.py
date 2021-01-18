@@ -4,6 +4,7 @@ from cv2 import cv2
 from ..exceptions.exceptions import IllegalArgumentError
 from .web_client import WebClient
 
+
 class Recognizer:
 
     def __init__(self, recognition_type):
@@ -34,7 +35,6 @@ class Recognizer:
         WebClient(self.recognition_type).get_trained_data()
 
         return
-
 
     def get_grayscale(self):
         """

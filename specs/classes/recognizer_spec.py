@@ -21,3 +21,7 @@ with description('Recognizer') as self:
             recognition_type = 'rats'
             expect(lambda: Recognizer(recognition_type)).to(
                 raise_error(exceptions.IllegalArgumentError))
+
+    with description('#get_cascade') as self:
+        recognition_type = 'human'
+        pass
